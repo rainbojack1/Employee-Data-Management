@@ -16,12 +16,12 @@ var firebaseConfig = {
   var database = firebase.database();
 
 // Initial Values
-var employeeName;
-var role;
-var startDate;
-var monWorked;
-var monRate;
-var total;
+var employeeName = "";
+var role = "";
+var startDate = "";
+var monWorked = 0;
+var monRate = 0;
+var total = 0;
 
 // db push
 database.ref().push({
@@ -32,5 +32,12 @@ database.ref().push({
   rate: monRate,
   total: total
 });
+
+$("#add-user").click(function(event){
+  event.preventDefault();
+  employeeName =  $("#name-input").val().trim();
+  console.log("employeeName: ", employeeName);
+});
+
 
 
