@@ -23,8 +23,14 @@ var monWorked;
 var monRate;
 var total;
 
-// db test
-database.ref().set({
-    hello: hello
-})
+// db push
+database.ref().push({
+  name: employeeName,
+  role: role,
+  start: startDate,
+  monWorked: monWorked,
+  rate: monRate,
+  total: total
+});
+
 
