@@ -23,7 +23,17 @@ var monWorked = 0;
 var monRate = 0;
 var total = 0;
 
-// db push
+
+
+$("#add-user").click(function(event){
+  event.preventDefault();
+  employeeName =  $("#name-input").val().trim();
+  role =  $("#role-input").val().trim();
+  startDate = $("#date-input").val().trim();
+  monRate = $("#rate-input").val().trim();
+  console.log("employeeName: ", employeeName);
+
+  // db push
 database.ref().push({
   name: employeeName,
   role: role,
@@ -33,11 +43,12 @@ database.ref().push({
   total: total
 });
 
-$("#add-user").click(function(event){
-  event.preventDefault();
-  employeeName =  $("#name-input").val().trim();
-  console.log("employeeName: ", employeeName);
 });
 
+// Firebase watcher .on("child_added"...
+database.ref().on("child_added", function(snap){
+  var value = snap.val();
+  console.log("value: ", value);
+})
 
 
