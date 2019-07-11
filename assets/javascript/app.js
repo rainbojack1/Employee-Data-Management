@@ -15,12 +15,40 @@ var firebaseConfig = {
   // Create a variable to reference the database.
   var database = firebase.database();
 
-// testing js
-var hello = 'AYE';
-console.log(hello);
+// Initial Values
+var employeeName = "";
+var role = "";
+var startDate = "";
+var monWorked = 0;
+var monRate = 0;
+var total = 0;
 
-// db test
-database.ref().set({
-    hello: hello
+
+
+$("#add-user").click(function(event){
+  event.preventDefault();
+  employeeName =  $("#name-input").val().trim();
+  role =  $("#role-input").val().trim();
+  startDate = $("#date-input").val().trim();
+  monRate = $("#rate-input").val().trim();
+  console.log("employeeName: ", employeeName);
+
+  // db push
+database.ref().push({
+  name: employeeName,
+  role: role,
+  start: startDate,
+  monWorked: monWorked,
+  rate: monRate,
+  total: total
+});
+
+});
+
+// Firebase watcher .on("child_added"...
+database.ref().on("child_added", function(snap){
+  var value = snap.val();
+  console.log("value: ", value);
 })
+
 
