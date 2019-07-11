@@ -1,3 +1,16 @@
 p{ 
     color: green
 }
+
+#table{
+    display: block;
+    width: 100%;
+
+}
+
+
+#tablerow {
+    padding-bottom: 40px;
+
+
+}
