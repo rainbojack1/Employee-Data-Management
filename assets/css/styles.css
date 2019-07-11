@@ -4,13 +4,20 @@ p{
 
 #table{
     display: block;
-    width: 100%;
-
+    width: 400px;
+    margin: auto;
 }
 
 
 #tablerow {
     padding-bottom: 40px;
+}
 
+.card {
+    width: 100%;
+}
 
+ form {
+     padding: 10px;
+    
 }
