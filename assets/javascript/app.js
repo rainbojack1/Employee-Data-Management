@@ -15,9 +15,13 @@ var firebaseConfig = {
   // Create a variable to reference the database.
   var database = firebase.database();
 
-// testing js
-var hello = 'AYE';
-console.log(hello);
+// Initial Values
+var employeeName;
+var role;
+var startDate;
+var monWorked;
+var monRate;
+var total;
 
 // db test
 database.ref().set({
