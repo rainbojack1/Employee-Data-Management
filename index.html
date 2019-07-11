@@ -26,35 +26,80 @@
             <h1 class="text-center">Timestamp</h1>
         </div>
 
-        <div class="row"></div>
+        <div class="row" id="tablerow">
 
-        <div class="col-lg-6">
             <div class="card card-default">
                 <div class="card-header">
-                    New Member Sign-Up
+                    Hello!
                 </div>
-                <div class="card-body">
 
-                    <!-- Sign-up Form (note the various input "types")-->
-                    <form role="form">
-                        <div class="form-group row">
-                            <label for="name-input">Name:</label>
-                            <input class="form-control" id="name-input" type="text">
-                        </div>
-                        <div class="form-group row">
-                            <label for="email-input">Email:</label>
-                            <input class="form-control" id="email-input" type="email">
-                        </div>
-                        <div class="form-group row">
-                            <label for="age-input">Age:</label>
-                            <input class="form-control" id="age-input" type="number">
-                        </div>
-                        <div class="form-group row">
-                            <label for="comment-input">How did you hear about us?</label>
-                            <textarea class="form-control" id="comment-input" rows="5"></textarea>
-                        </div>
-                        <button class="btn btn-default" id="add-user" type="submit">Submit</button>
-                    </form>
+                <div class="card-body" id="topcard">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Employee Name</th>
+                                <th scope="col">Role</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">Months worked</th>
+                                <th scope="col">Monthly rate ($)</th>
+                                <th scope="col">Total billed ($)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-default">
+                    <div class="card-header">
+                        New Member Sign-Up
+                    </div>
+                    <div class="card-body">
+
+                        <!-- Sign-up Form (note the various input "types")-->
+                        <form role="form">
+                            <div class="form-group row">
+                                <label for="name-input">Employee name</label>
+                                <input class="form-control" id="name-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="email-input">Role</label>
+                                <input class="form-control" id="role-input" type="text">
+                            </div>
+                            <div class="form-group row">
+                                <label for="age-input">Start date</label>
+                                <input class="form-control" id="date-input" type="date">
+                            </div>
+                            <div class="form-group row">
+                                <label for="comment-input">Monthly Rate</label>
+                                <input class="form-control" id="rate-input" type="text">
+                            </div>
+                            <button class="btn btn-default" id="add-user" type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -67,3 +112,4 @@
 </body>
 
 </html>
+
