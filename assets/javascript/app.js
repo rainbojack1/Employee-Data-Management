@@ -1,12 +1,12 @@
 var firebaseConfig = {
-    apiKey: "AIzaSyDMa8F9axhjR2EACxjjPbjiVziH7gqfZjA",
-    authDomain: "mydata-efc36.firebaseapp.com",
-    databaseURL: "https://mydata-efc36.firebaseio.com",
-    projectId: "mydata-efc36",
-    storageBucket: "mydata-efc36.appspot.com",
-    messagingSenderId: "233509212002",
-    appId: "1:233509212002:web:0d661c5ee99e353d"
-  };
+  apiKey: "AIzaSyDMa8F9axhjR2EACxjjPbjiVziH7gqfZjA",
+  authDomain: "mydata-efc36.firebaseapp.com",
+  databaseURL: "https://mydata-efc36.firebaseio.com",
+  projectId: "mydata-efc36",
+  storageBucket: "mydata-efc36.appspot.com",
+  messagingSenderId: "233509212002",
+  appId: "1:233509212002:web:2c66b91bda714330"
+};
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
@@ -23,15 +23,16 @@ var monWorked = 0;
 var monRate = 0;
 var total = 0;
 
+console.log("today: ", $.now());
 
-
-$("#add-user").click(function(event){
+$("#submitbutton").click(function(event){
   event.preventDefault();
   employeeName =  $("#name-input").val().trim();
   role =  $("#role-input").val().trim();
   startDate = $("#date-input").val().trim();
   monRate = $("#rate-input").val().trim();
   console.log("employeeName: ", employeeName);
+  
 
   // db push
 database.ref().push({
@@ -40,7 +41,9 @@ database.ref().push({
   start: startDate,
   monWorked: monWorked,
   rate: monRate,
-  total: total
+  total: total,
+  //pulls the current time stamp in UTC
+  dateAdded: firebase.database.ServerValue.TIMESTAMP
 });
 
 });
@@ -49,6 +52,9 @@ database.ref().push({
 database.ref().on("child_added", function(snap){
   var value = snap.val();
   console.log("value: ", value);
+  console.log("name: ", value.name);
+
+  $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.role + "</td><td>" + value.start + "</td></tr>");
 })
 
 
