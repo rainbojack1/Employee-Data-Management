@@ -23,7 +23,6 @@ var monWorked = 0;
 var monRate = 0;
 var total = 0;
 var newFormat = "MM/DD/YYYY";
-//var formatStartDate;
 
 console.log("today: ", $.now());
 
@@ -32,17 +31,20 @@ $("#submitbutton").click(function(event){
   employeeName =  $("#name-input").val().trim();
   role =  $("#role-input").val().trim();
   startDate = $("#date-input").val().trim();
-  monRate = $("#rate-input").val().trim();
+  monRate = parseInt($("#rate-input").val().trim());
   console.log("employeeName: ", employeeName);
 
   
   var formatStartDate = moment(startDate).format(newFormat);
-  var monthsWorked = moment().diff(formatStartDate, 'months');
+  var monthsWorked = parseInt(moment().diff(formatStartDate, 'months'));
   console.log("monthsWorked = ",  monthsWorked);
   console.log("startDate typeof", typeof(startDate));
   console.log("formatStartDate", formatStartDate);
-  
 
+  total = monthsWorked * monRate;
+  console.log("total = ", total);
+
+  
   // db push
 database.ref().push({
   name: employeeName,
@@ -63,10 +65,7 @@ database.ref().on("child_added", function(snap){
   console.log("value: ", value);
   console.log("name: ", value.name);
 
-  $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.role + "</td><td>" + value.start + "</td><td>" + value.monthsWorked + "</td><td>" + value.rate + "</td></tr>");
+  $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.role + "</td><td>" + value.start + "</td><td>" + value.monthsWorked + "</td><td>" + value.rate + "</td><td>" + value.rate + "</td></tr>");
 })
 
-/*
-moment.js has functions to format date
-moment().format("MM/DD/YYY")
-*/
+
