@@ -22,6 +22,8 @@ var startDate = "";
 var monWorked = 0;
 var monRate = 0;
 var total = 0;
+var newFormat = "MM/DD/YYYY";
+//var formatStartDate;
 
 console.log("today: ", $.now());
 
@@ -32,14 +34,21 @@ $("#submitbutton").click(function(event){
   startDate = $("#date-input").val().trim();
   monRate = $("#rate-input").val().trim();
   console.log("employeeName: ", employeeName);
+
+  
+  var formatStartDate = moment(startDate).format(newFormat);
+  var monthsWorked = moment().diff(formatStartDate, 'months');
+  console.log("monthsWorked = ",  monthsWorked);
+  console.log("startDate typeof", typeof(startDate));
+  console.log("formatStartDate", formatStartDate);
   
 
   // db push
 database.ref().push({
   name: employeeName,
   role: role,
-  start: startDate,
-  monWorked: monWorked,
+  start: formatStartDate,
+  monthsWorked: monthsWorked,
   rate: monRate,
   total: total,
   //pulls the current time stamp in UTC
@@ -54,7 +63,10 @@ database.ref().on("child_added", function(snap){
   console.log("value: ", value);
   console.log("name: ", value.name);
 
-  $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.role + "</td><td>" + value.start + "</td></tr>");
+  $("tbody").append("<tr><td>" + value.name + "</td><td>" + value.role + "</td><td>" + value.start + "</td><td>" + value.monthsWorked + "</td><td>" + value.rate + "</td></tr>");
 })
 
-
+/*
+moment.js has functions to format date
+moment().format("MM/DD/YYY")
+*/
