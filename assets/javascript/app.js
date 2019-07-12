@@ -24,3 +24,7 @@ database.ref().set({
     hello: hello
 })
 
+var newFormat = "MM/DD/YYYY"
+var formatStartDate = moment(startDate, newFormat);
+var monthsWorked = moment().diff(formatStartDate, 'months');
+
